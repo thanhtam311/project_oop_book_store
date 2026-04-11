@@ -5,6 +5,8 @@
 #include <fstream>
 #include <vector>   
 #include <iomanip>
+#include <cstdlib>
+#include <ctime>
 Data::Data(Database &db) : ds(db) {}
 void Data::Laydata(std::string filename) {
     ifstream file(filename);

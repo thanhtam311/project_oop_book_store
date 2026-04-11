@@ -8,12 +8,15 @@
 #include <fstream>
 #include <vector>   
 #include <iomanip>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 class HanhVi{
 private:
-    Database& db;
+    Database_Sach& dbs;
+    Database_Donhang& dbd;
 public:
-    HanhVi(Database &d);
+    HanhVi(Database_Sach &d, Database_Donhang &c);
     void Mua();
     void themsach();
     void timsachtheoten();

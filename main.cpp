@@ -4,6 +4,8 @@
 #include <fstream>
 #include <vector>   
 #include <iomanip>
+#include <cstdlib>
+#include <ctime>
 int main()
 {
     Database db;

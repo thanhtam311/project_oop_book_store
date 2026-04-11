@@ -234,7 +234,7 @@ Tac gia: Tac gia 34
 Nam xuat ban: 2014
 The loai: The loai 5
 Gia: 118000
-So luong: 15
+So luong: 5
 
 Ten sach: Sach 35
 Tac gia: Tac gia 35
@@ -339,26 +339,26 @@ Tac gia: Tac gia 49
 Nam xuat ban: 2009
 The loai: The loai 5
 Gia: 148000
-So luong: 10
+So luong: 8
 
 Ten sach: Sach 50
 Tac gia: Tac gia 50
 Nam xuat ban: 2010
 The loai: The loai 1
 Gia: 150000
-So luong: 11
+So luong: 10
 
 Ten sach: Sach 51
 Tac gia: Tac gia 51
 Nam xuat ban: 2005
 The loai: The loai 1
 Gia: 400000
-So luong: 3
+So luong: 0
 
 Ten sach: Sach 52
 Tac gia: Tac gia 52
 Nam xuat ban: 2001
 The loai: The loai 1
 Gia: 10000
-So luong: 4
+So luong: 0
 

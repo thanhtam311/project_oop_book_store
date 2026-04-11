@@ -8,6 +8,8 @@
 #include <fstream>
 #include <vector>   
 #include <iomanip>
+#include <cstdlib>
+#include <ctime>
 staff::staff(Database &d):HanhVi(d),Data(d),db(d){}
 customer::customer(Database &d):HanhVi(d),Data(d),db(d){}
 void staff::quanli()

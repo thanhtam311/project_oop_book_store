@@ -10,4 +10,6 @@
 #include <fstream>
 #include <vector>   
 #include <iomanip>
+#include <cstdlib>
+#include <ctime>
 #endif

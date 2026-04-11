@@ -4,6 +4,8 @@
 #include <fstream>
 #include <vector>
 #include <iomanip>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 void Sach::setTen(string t) { Sach::tenSach = t; }
 void Sach::setTacGia(string tg) { Sach::tacGia = tg; }

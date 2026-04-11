@@ -5,11 +5,13 @@
 #include <fstream>
 #include <vector>
 #include <iomanip> 
+#include <cstdlib>
+#include <ctime>
 using namespace std;
-void Database::database_push(Sach s){
+void Database_Sach::database_push(Sach s){
     dulieu.push_back(s);
 }
-void Database::database_show() {
+void Database_Sach::database_show() {
 cout << left
     << setw(35) << "Ten sach"
     << setw(25) << "Tac gia"
@@ -30,13 +32,31 @@ for (int i = 0; i < dulieu.size(); i++) {
         << endl;
 }
 }
-int Database::getSizedatabase() {
+int Database_Sach::getSizedatabase() {
     return dulieu.size();
 }
-vector<Sach>& Database::getDulieu() {
+vector<Sach>& Database_Sach::getDulieu() {
     return dulieu;
 }
-void Database::database_push_donhang(int x)
+void Database_Donhang::database_push(mahanghoa x)
 {
-    madonhang.push_back(x);
+    ma.push_back(x);
+}
+vector<mahanghoa>& Database_Donhang::getDulieu(){
+    return ma;
+}
+int Database_Donhang::getSizedatabase(){
+    return ma.size();
+}
+void Database_Donhang::database_show(){
+    for(int i = 0;i<ma.size();i++){
+        cout << "===== HOA DON XUAT =====\n";
+        cout << "Ma hoa don: "<<mahoadon<<endl;
+        cout << "Ten sach: " << danhsach[i].getTen() << endl;
+        cout << "So luong: " << slMua << endl;
+        cout << "Don gia:  " << fixed << setprecision(0) << danhsach[i].getGia() << endl;
+        cout << "------------------------\n";
+        cout << "TONG TIEN: " << fixed << setprecision(0) << tongTien << " VND\n";
+        cout << "Giao dich thanh cong! So luong ton kho da duoc cap nhat.\n";
+    }
 }

@@ -9,6 +9,8 @@
 #include <fstream>
 #include <vector>   
 #include <iomanip>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 class staff:public HanhVi,public Data{
     Database& db;

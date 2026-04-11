@@ -6,6 +6,8 @@
 #include <fstream>
 #include <vector>   
 #include <iomanip>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 class Data{
     Database &ds;

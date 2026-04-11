@@ -6,16 +6,38 @@
 #include <fstream>
 #include <vector>
 #include <iomanip>
+#include <cstdlib>
+#include <ctime>
+struct mahanghoa{
+    int id_donhang;
+    string ten;
+    int soluong;
+    double dongia;
+    double tien;
+};
 class Database{
+public:
+    virtual void database_push(){}
+    virtual void database_show(){}
+    virtual int getSizedatabase(){}
+    virtual ~Database(){}
+};
+class Database_Sach:public Database{
 private:
     vector<Sach> dulieu;
-    vector<int>  madonhang;
 public:
     void database_push(Sach s);
     void database_show();
     int getSizedatabase();
     vector<Sach>& getDulieu();
-    void database_push_donhang(int x);
+};
+class Database_Donhang:public Database{
+    vector<mahanghoa> ma;
+public:
+    void database_push(mahanghoa x);
+    void database_show();
+    int getSizedatabase();
+    vector<mahanghoa>& getDulieu();
 
 };
 #endif
