@@ -19,7 +19,9 @@ class Database{
 public:
     virtual void database_push(){}
     virtual void database_show(){}
-    virtual int getSizedatabase(){}
+    virtual int getSizedatabase(){
+        return 0;
+    }
     virtual ~Database(){}
 };
 class Database_Sach:public Database{

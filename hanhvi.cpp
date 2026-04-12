@@ -7,6 +7,21 @@
 #include <cstdlib>
 #include <ctime>
 HanhVi::HanhVi(Database_Sach &d, Database_Donhang &c) : dbs(d),dbd(c) {}
+string layThoigianHienTai() {
+    time_t now = time(0);
+    tm *ltm = localtime(&now);
+
+    char buffer[50];
+    sprintf(buffer, "%02d/%02d/%04d %02d:%02d:%02d",
+            ltm->tm_mday,
+            ltm->tm_mon + 1,
+            1900 + ltm->tm_year,
+            ltm->tm_hour,
+            ltm->tm_min,
+            ltm->tm_sec);
+
+    return string(buffer);
+}
 void HanhVi::Mua() {
     string tensach;
     bool timthay = false;
@@ -39,7 +54,8 @@ void HanhVi::Mua() {
                 dbs.database_show();
                 srand(time(0));
                 int mahoadon = 1000 + rand() % 9000;
-                double tongTien = slMua * danhsach[i].getGia(); 
+                double tongTien = slMua * danhsach[i].getGia();
+                ghiLichSu("Mua", danhsach[i].getTen(), slMua, tongTien, mahoadon); 
                 cout<<"Hoa don da duoc xuat vui long kiem tra thong tin!\n";                   
                 remove("hoa_don.txt");
                 ofstream fiout("hoa_don.txt");
@@ -51,7 +67,8 @@ void HanhVi::Mua() {
                 fiout << "------------------------\n";
                 fiout << "TONG TIEN: " << fixed << setprecision(0) << tongTien << " VND\n";
                 fiout << "Giao dich thanh cong! So luong ton kho da duoc cap nhat.\n";
-                dbs.database_show();
+                fiout << "Thoi gian giao dich: " << layThoigianHienTai() << endl;
+                //dbs.database_show();
                 fiout.close();
             }
             break;
@@ -190,3 +207,93 @@ void HanhVi::suagia() {
         cout << "Khong tim thay sach!" << endl;
     }
 }
+
+void HanhVi::thuesach() {
+    string tensach;
+    string tenkhach;
+    bool timthay = false;
+    cin.ignore();
+    cout << "Nhap ten sach can thue: ";
+    getline(cin, tensach);
+    vector<Sach>& danhsach = dbs.getDulieu();
+    for (int i = 0;i < (int)danhsach.size();i++) {
+        if (danhsach[i].getTen() == tensach) {
+            timthay = true;
+            cout << "Thong tin sach: " << danhsach[i].getTen() << endl;
+            cout << "Gia thue: " << fixed << setprecision(0) << danhsach[i].getGia() * 0.1 << " | Ton kho: " << danhsach[i].getSoLuong() << endl;
+            if (danhsach[i].getSoLuong() <= 0) {
+                cout << "Xin loi, sach nay hien da het hang!\n";
+                return;
+            }
+            int slThue;
+            cout << "Nhap so luong muon thue: ";
+            cin >> slThue;
+            if (slThue <= 0) {
+                cout << "So luong thue khong hop le!\n";
+            }
+            else if (slThue > danhsach[i].getSoLuong()) {
+                cout << "Khong du so luong trong kho! (Chi con " << danhsach[i].getSoLuong() << " cuon)\n";
+            }
+            else {
+                int slMoi = danhsach[i].getSoLuong() - slThue;
+                danhsach[i].setSoLuong(slMoi);
+                dbs.database_show();
+                srand(time(0));
+                int mahoadon = 1000 + rand() % 9000;
+                double tongTien = slThue * danhsach[i].getGia() * 0.1; 
+                ghiLichSu("Thue", danhsach[i].getTen(), slThue, tongTien, mahoadon);
+                cout<<"Hoa don da duoc xuat vui long kiem tra thong tin!\n";                   
+                remove("hoa_don_thue.txt");
+                ofstream fiout("hoa_don_thue.txt");
+                fiout << "===== HOA DON THUE =====\n";
+                fiout << "Ma hoa don: "<<mahoadon<<endl;
+                fiout << "Ten sach: " << danhsach[i].getTen() << endl;
+                fiout << "So luong: " << slThue << endl;
+                fiout << "Don gia thue:  " << fixed << setprecision(0) << danhsach[i].getGia() * 0.1 << endl;
+                fiout << "------------------------\n";
+                fiout << "TONG TIEN: " << fixed << setprecision(0) << tongTien << " VND\n";
+                fiout << "Giao dich thue thanh cong! So luong ton kho da duoc cap nhat.\n";
+                fiout << "Thoi gian giao dich: " << layThoigianHienTai() << endl;
+                //dbs.database_show();
+                fiout.close();
+            }
+            break;
+        }
+    }
+    if (!timthay) {
+        cout << "Khong tim thay sach!" << endl;
+    }
+
+}
+void HanhVi::ghiLichSu(string loai, string tenSach, int soLuong, double tongTien,int mahoadon) {
+    ofstream fout("lich_su.txt", ios::app);
+
+    string thoigian = layThoigianHienTai();
+
+    fout << "===== GIAO DICH =====\n";
+    fout << "Loai: " << loai << endl;
+    fout << "Ma don hang: " << mahoadon << endl;
+    fout << "Ten sach: " << tenSach << endl;
+    fout << "So luong: " << soLuong << endl;
+    fout << "Tong tien: " << tongTien << " VND\n";
+    fout << "Thoi gian: " << thoigian << endl;
+    fout << "----------------------\n\n";
+
+    fout.close();
+}
+
+void HanhVi::xemLichsu() {
+    ifstream fiin("lich_su.txt");
+    if (!fiin) {
+        cout << "Khong the mo file lich_su.txt!\n";
+        return;
+    }
+    string line;
+    cout << "\n===== LICH SU GIAO DICH =====\n";
+    while (getline(fiin, line)) {
+        cout << line << endl;
+    }
+    fiin.close();
+}
+
+

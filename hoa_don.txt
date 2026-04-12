@@ -1,8 +1,9 @@
 ===== HOA DON XUAT =====
-Ma hoa don: 5214
-Ten sach: Sach 34
-So luong: 10
-Don gia:  118000
+Ma hoa don: 6214
+Ten sach: Sach 3
+So luong: 1
+Don gia:  56000
 ------------------------
-TONG TIEN: 1180000 VND
+TONG TIEN: 56000 VND
 Giao dich thanh cong! So luong ton kho da duoc cap nhat.
+Thoi gian giao dich: 12/04/2026 23:59:58
