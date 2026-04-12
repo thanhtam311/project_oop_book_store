@@ -14,7 +14,7 @@ void HanhVi::Mua() {
     cout << "Nhap ten sach muon mua: ";
     getline(cin, tensach);
     vector<Sach>& danhsach = dbs.getDulieu();
-    vector<mahanghoa>& hoadon = dbd.getDulieu();
+    mahanghoa hoadon;
     for (int i = 0; i < (int)danhsach.size(); i++) {
         if (danhsach[i].getTen() == tensach) {
             timthay = true;
@@ -24,33 +24,35 @@ void HanhVi::Mua() {
                 cout << "Xin loi, sach nay hien da het hang!\n";
                 return;
             }
-            int slMua;
             cout << "Nhap so luong muon mua: ";
-            cin >> slMua;
-            if (slMua <= 0) {
+            cin >> hoadon.soluong;
+            if (hoadon.soluong <= 0) {
                 cout << "So luong mua khong hop le!\n";
             }
-            else if (slMua > danhsach[i].getSoLuong()) {
+            else if (hoadon.soluong > danhsach[i].getSoLuong()) {
                 cout << "Khong du so luong trong kho! (Chi con " << danhsach[i].getSoLuong() << " cuon)\n";
             }
             else {
-                int slMoi = danhsach[i].getSoLuong() - slMua;
+                int slMoi = danhsach[i].getSoLuong() - hoadon.soluong;
                 danhsach[i].setSoLuong(slMoi);
                 dbs.database_show();
                 srand(time(0));
-                int mahoadon = 1000 + rand() % 9000;
-                double tongTien = slMua * danhsach[i].getGia(); 
+                hoadon.id_donhang=1000 + rand() % 9000;
+                hoadon.tien = hoadon.soluong * danhsach[i].getGia(); 
+                hoadon.ten = danhsach[i].getTen();
+                hoadon.dongia = danhsach[i].getGia();
                 cout<<"Hoa don da duoc xuat vui long kiem tra thong tin!\n";                   
                 remove("hoa_don.txt");
                 ofstream fiout("hoa_don.txt");
                 fiout << "===== HOA DON XUAT =====\n";
-                fiout << "Ma hoa don: "<<mahoadon<<endl;
-                fiout << "Ten sach: " << danhsach[i].getTen() << endl;
-                fiout << "So luong: " << slMua << endl;
-                fiout << "Don gia:  " << fixed << setprecision(0) << danhsach[i].getGia() << endl;
+                fiout << "Ma hoa don: "<<hoadon.id_donhang<<endl;
+                fiout << "Ten sach: " << hoadon.ten<< endl;
+                fiout << "So luong: " << hoadon.soluong << endl;
+                fiout << "Don gia:  " << fixed << setprecision(0) << hoadon.dongia  << endl;
                 fiout << "------------------------\n";
-                fiout << "TONG TIEN: " << fixed << setprecision(0) << tongTien << " VND\n";
+                fiout << "TONG TIEN: " << fixed << setprecision(0) << hoadon.tien << " VND\n";
                 fiout << "Giao dich thanh cong! So luong ton kho da duoc cap nhat.\n";
+                dbd.database_push(hoadon);
                 dbs.database_show();
                 fiout.close();
             }

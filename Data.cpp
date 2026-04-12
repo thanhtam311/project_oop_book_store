@@ -7,7 +7,7 @@
 #include <iomanip>
 #include <cstdlib>
 #include <ctime>
-Data::Data(Database &db) : ds(db) {}
+Data::Data(Database_Sach &db) : ds(db) {}
 void Data::Laydata(std::string filename) {
     ifstream file(filename);
     if (!file.is_open()) {
