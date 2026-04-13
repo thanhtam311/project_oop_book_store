@@ -10,14 +10,8 @@
 #include <iomanip>
 #include <cstdlib>
 #include <ctime>
-<<<<<<< HEAD
 staff::staff(Database_Sach &d,Database_Donhang &x):HanhVi(d,x),Data(d,x),db(d),dh(x){}
 customer::customer(Database_Sach &d,Database_Donhang &x):HanhVi(d,x),Data(d,x),db(d),dh(x){}
-=======
-staff::staff(Database_Sach &d,Database_Donhang &x):HanhVi(d,x),Data(d),db(d),dh(x){}
-customer::customer(Database_Sach &d,Database_Donhang &x):HanhVi(d,x),Data(d),db(d),dh(x){}
-renter::renter(Database_Sach &d,Database_Donhang &x) : HanhVi(d,x), Data(d), db(d), dh(x) {}
->>>>>>> cdaaae98db8e3a9db657e176635a8401bd9cfbc2
 void staff::quanli()
 {
     int chon;
@@ -30,7 +24,6 @@ void staff::quanli()
         cout << "5. Tim sach theo tac gia\n";
         cout << "6. Xoa sach\n";
         cout << "7. Sua gia\n";
-        cout << "8. Xem lich su giao dich\n";
         cout << "0. Thoat\n";
         cout << "Chon: ";
         cin >> chon;
@@ -56,9 +49,6 @@ void staff::quanli()
         case 7:
             suagia();
             break;
-        case 8:
-            xemLichsu();
-            break;
         case 0:
             cout << "Thoat chuong trinh.\n";
             xuatdata();
@@ -76,17 +66,7 @@ void customer::thuchienmua()
     xuatdata();
     xuathoadon();
 }
-
-void renter::thuchienthue()
-{
-    db.database_show();
-    cout << "\n===== THUE SACH =====\n";
-    cout<<"Vui long nhap thong tin sach ban muon thue!\n";
-    thuesach();
-    xuatdata();
-}
-
-doituong::doituong(Database_Sach &d,Database_Donhang &x) : staff(d,x),customer(d,x),renter(d,x){}
+doituong::doituong(Database_Sach &d,Database_Donhang &x) : staff(d,x),customer(d,x){}
 void doituong::thuchien() 
 {
     int chon;
@@ -94,14 +74,10 @@ void doituong::thuchien()
         cout<<"Role cua ban la:\n";
         cout<<"1.Nguoi mua\n";
         cout<<"2.Quan li\n";
-        cout<<"3.Nguoi thue\n";
         cout<<"0.Thoat\n";
         cout<<"Moi ban chon Role: ";
         cin>>chon;
         switch (chon) {
-            case 3:
-            thuchienthue();
-            break;
         case 2:
             quanli();
             break;

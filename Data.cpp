@@ -7,11 +7,7 @@
 #include <iomanip>
 #include <cstdlib>
 #include <ctime>
-<<<<<<< HEAD
 Data::Data(Database_Sach &db,Database_Donhang &x) : ds(db),dh(x) {}
-=======
-Data::Data(Database_Sach &db) : ds(db) {}
->>>>>>> cdaaae98db8e3a9db657e176635a8401bd9cfbc2
 void Data::Laydata(std::string filename) {
     ifstream file(filename);
     if (!file.is_open()) {

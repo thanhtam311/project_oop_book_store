@@ -1,19 +1,9 @@
 ===== HOA DON XUAT =====
-<<<<<<< HEAD
-Ma hoa don: 6834
+Ma hoa don: 9137
 Ten sach: Sach 52
 So luong: 1
 Don gia:  50000
-Thoi gian: 13/4/2026 16:46:34
+Thoi gian: 13/4/2026 16:58:19
 ------------------------
 TONG TIEN: 50000 VND
-=======
-Ma hoa don: 6214
-Ten sach: Sach 3
-So luong: 1
-Don gia:  56000
-------------------------
-TONG TIEN: 56000 VND
->>>>>>> cdaaae98db8e3a9db657e176635a8401bd9cfbc2
 Giao dich thanh cong! So luong ton kho da duoc cap nhat.
-Thoi gian giao dich: 12/04/2026 23:59:58

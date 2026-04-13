@@ -360,5 +360,5 @@ Tac gia: Tac gia 52
 Nam xuat ban: 2001
 The loai: The loai 1
 Gia: 50000
-So luong: 79
+So luong: 78
 
