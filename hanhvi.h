@@ -25,5 +25,8 @@ public:
     void timsachtheotacgia();
     void xoasach();
     void suagia();
+    void thuesach();
+    void xemLichsu();
+    void ghiLichSu(string loai, string tenSach, int soLuong, double tongTien,int mahoadon);
 };
 #endif

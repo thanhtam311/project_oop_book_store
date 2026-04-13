@@ -3,21 +3,21 @@ Tac gia: Tac gia 1
 Nam xuat ban: 2001
 The loai: The loai 2
 Gia: 52000
-So luong: 2
+So luong: 0
 
 Ten sach: Sach 2
 Tac gia: Tac gia 2
 Nam xuat ban: 2002
 The loai: The loai 3
 Gia: 54000
-So luong: 3
+So luong: 0
 
 Ten sach: Sach 3
 Tac gia: Tac gia 3
 Nam xuat ban: 2003
 The loai: The loai 4
 Gia: 56000
-So luong: 4
+So luong: 2
 
 Ten sach: Sach 4
 Tac gia: Tac gia 4

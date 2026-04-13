@@ -20,7 +20,7 @@ cout << left
     << setw(12) << "Gia"
     << setw(10) << "So luong"
     << endl;
-cout << string(125, '-') << endl;
+cout << string(115, '-') << endl;
 for (int i = 0; i < dulieu.size(); i++) {
     cout << left
         << setw(35) << dulieu[i].getTen()
@@ -32,17 +32,17 @@ for (int i = 0; i < dulieu.size(); i++) {
         << endl;
 }
 }
-int Database_Sach::getSizedatabase() {
+ int Database_Sach::getSizedatabase() {
     return dulieu.size();
 }
-vector<Sach>& Database_Sach::getDulieu() {
+ vector<Sach>& Database_Sach::getDulieu() {
     return dulieu;
 }
 void Database_Donhang::database_push(mahanghoa x)
 {
     ma.push_back(x);
 }
-vector<mahanghoa>& Database_Donhang::getDulieu(){
+ vector<mahanghoa>& Database_Donhang::getDulieu(){
     return ma;
 }
 int Database_Donhang::getSizedatabase(){
