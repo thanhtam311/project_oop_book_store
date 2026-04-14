@@ -58,14 +58,26 @@ void Data::xuathoadon(){
     remove("luutru.txt");
     ofstream fiout("luutru.txt");
     for(int i = 0; i < dh.getSizedatabase(); i++){
-        fiout << "===== HOA DON XUAT =====\n";
-        fiout << "Ma hoa don: "<<dh.getDulieu()[i].id_donhang<<endl;
-        fiout << "Ten sach: " <<dh.getDulieu()[i].ten<< endl;
-        fiout << "So luong: " << dh.getDulieu()[i].soluong << endl;
-        fiout << "Don gia:  " << fixed << setprecision(0) << dh.getDulieu()[i].dongia  << endl;
-        fiout << "Thoi gian: " << dh.getDulieu()[i].tg.ngay << "/" << dh.getDulieu()[i].tg.thang << "/" << dh.getDulieu()[i].tg.nam << " " << dh.getDulieu()[i].tg.gio << ":" << dh.getDulieu()[i].tg.phut << ":" << dh.getDulieu()[i].tg.giay << endl;
-        fiout << "------------------------\n";
-        fiout << "TONG TIEN: " << fixed << setprecision(0) << dh.getDulieu()[i].tien<< " VND\n";
+        if(dh.getDulieu()[i].check == true){
+            fiout << "===== HOA DON MUA =====\n";
+            fiout << "Ma hoa don: "<<dh.getDulieu()[i].id_donhang<<endl;
+            fiout << "Ten sach: " <<dh.getDulieu()[i].ten<< endl;
+            fiout << "So luong: " << dh.getDulieu()[i].soluong << endl;
+            fiout << "Don gia:  " << fixed << setprecision(0) << dh.getDulieu()[i].dongia  << endl;
+            fiout << "Thoi gian: " << dh.getDulieu()[i].tg.ngay << "/" << dh.getDulieu()[i].tg.thang << "/" << dh.getDulieu()[i].tg.nam << " " << dh.getDulieu()[i].tg.gio << ":" << dh.getDulieu()[i].tg.phut << ":" << dh.getDulieu()[i].tg.giay << endl;
+            fiout << "------------------------\n";
+            fiout << "TONG TIEN: " << fixed << setprecision(0) << dh.getDulieu()[i].tien<< " VND\n";
+        }else 
+        {
+            fiout << "===== HOA DON THUE =====\n";
+            fiout << "Ma hoa don: "<<dh.getDulieu()[i].id_donhang<<endl;
+            fiout << "Ten sach: " << dh.getDulieu()[i].ten << endl;
+            fiout << "So luong: " << dh.getDulieu()[i].soluong << endl;
+            fiout << "Don gia thue:  " << fixed << setprecision(0) << dh.getDulieu()[i].dongia << endl;
+            fiout << "Thoi gian: " << dh.getDulieu()[i].tg.ngay << "/" << dh.getDulieu()[i].tg.thang << "/" << dh.getDulieu()[i].tg.nam << " " << dh.getDulieu()[i].tg.gio << ":" << dh.getDulieu()[i].tg.phut << ":" << dh.getDulieu()[i].tg.giay << endl;
+            fiout << "------------------------\n";
+            fiout << "TONG TIEN: " << fixed << setprecision(0) << dh.getDulieu()[i].tien << " VND\n";
+        }
     }
     fiout.close();
 }

@@ -16,6 +16,7 @@ void HanhVi::Mua() {
     getline(cin, tensach);
     vector<Sach>& danhsach = dbs.getDulieu();
     mahanghoa hoadon;
+    hoadon.check = true;
     for (int i = 0; i < (int)danhsach.size(); i++) {
         if (danhsach[i].getTen() == tensach) {
             timthay = true;
@@ -205,4 +206,96 @@ thoigian HanhVi::layThoigianHienTai(){
     tg.phut = ltm->tm_min;
     tg.giay = ltm->tm_sec;
     return tg;
+}
+void HanhVi::thuesach() {
+    string tensach;
+    string tenkhach;
+    bool timthay = false;
+    cin.ignore();
+    cout << "Nhap ten sach can thue: ";
+    getline(cin, tensach);
+    vector<Sach>& danhsach = dbs.getDulieu();
+    mahanghoa hoadon;
+    hoadon.check = false;
+    for (int i = 0;i < (int)danhsach.size();i++) {
+        if (danhsach[i].getTen() == tensach) {
+            timthay = true;
+            cout << "Thong tin sach: " << danhsach[i].getTen() << endl;
+            cout << "Gia thue: " << fixed << setprecision(0) << danhsach[i].getGia() * 0.1 << " | Ton kho: " << danhsach[i].getSoLuong() << endl;
+            if (danhsach[i].getSoLuong() <= 0) {
+                cout << "Xin loi, sach nay hien da het hang!\n";
+                return;
+            }
+            cout << "Nhap so luong muon thue: ";
+            cin >> hoadon.soluong;
+            cout << "nhap thoi gian thue (so ngay): ";
+            int songay;
+            cin >> songay;
+            if (hoadon.soluong <= 0) {
+                cout << "So luong thue khong hop le!\n";
+            }
+            else if (hoadon.soluong > danhsach[i].getSoLuong()) {
+                cout << "Khong du so luong trong kho! (Chi con " << danhsach[i].getSoLuong() << " cuon)\n";
+            }
+            else {
+                danhsach[i].setSoLuong(danhsach[i].getSoLuong() - hoadon.soluong);
+                dbs.database_show();
+                srand(time(0));
+                hoadon.id_donhang = 1000 + rand() % 9000;
+                hoadon.ten = danhsach[i].getTen();
+                hoadon.dongia = danhsach[i].getGia() * 0.1;
+                hoadon.tg = layThoigianHienTai();
+                hoadon.tien = hoadon.soluong * hoadon.dongia* songay;
+                cout<<"Hoa don da duoc xuat vui long kiem tra thong tin!\n";                   
+                remove("hoa_don_thue.txt");
+                ofstream fiout("hoa_don_thue.txt");
+                fiout << "===== HOA DON THUE =====\n";
+                fiout << "Ma hoa don: "<<hoadon.id_donhang<<endl;
+                fiout << "Ten sach: " << hoadon.ten << endl;
+                fiout << "So luong: " << hoadon.soluong << endl;
+                fiout << "Don gia thue:  " << fixed << setprecision(0) << hoadon.dongia << endl;
+                fiout << "Thoi gian: " << hoadon.tg.ngay << "/" << hoadon.tg.thang << "/" << hoadon.tg.nam << " " << hoadon.tg.gio << ":" << hoadon.tg.phut << ":" << hoadon.tg.giay << endl;
+                fiout << "------------------------\n";
+                fiout << "TONG TIEN: " << fixed << setprecision(0) << hoadon.tien << " VND\n";
+                fiout.close();
+                dbd.database_push(hoadon);
+            }
+            break;
+        }
+    }
+    if (!timthay) {
+        cout << "Khong tim thay sach!" << endl;
+    }
+
+}
+void HanhVi::trasach(){
+    int id_donhang;
+    bool timthay = false;
+    cout << "Nhap ma hoa don thue can tra: ";
+    cin >> id_donhang;
+    vector<mahanghoa>& danhsach = dbd.getDulieu();
+    for (int i = 0;i < (int)danhsach.size();i++) {
+        if (danhsach[i].id_donhang == id_donhang && danhsach[i].check == false) {
+            thoigian tgtra = layThoigianHienTai();
+            int songaythue = (tgtra.nam - danhsach[i].tg.nam) * 365 + (tgtra.thang - danhsach[i].tg.thang) * 30 + (tgtra.ngay - danhsach[i].tg.ngay);
+            if(danhsach[i].soluong * danhsach[i].dongia * songaythue > danhsach[i].tien){
+                cout << "Khach hang da thue qua han! Vui long tra sach va thanh toan tien phat!\n";
+                danhsach[i].tien = danhsach[i].soluong * danhsach[i].dongia * songaythue;
+            }
+            timthay = true;
+            vector<Sach>& danhsach_sach = dbs.getDulieu();
+            for (int j = 0; j < (int)danhsach_sach.size(); j++) {
+                if (danhsach_sach[j].getTen() == danhsach[i].ten) {
+                    danhsach_sach[j].setSoLuong(danhsach_sach[j].getSoLuong() + danhsach[i].soluong);
+                    cout << "Da cap nhat so luong ton kho!\n";
+                    break;
+                }
+            }
+            break;
+        }
+    }
+    if (!timthay) {
+        cout << "Khong tim thay hoa don thue!" << endl;
+    }
+
 }

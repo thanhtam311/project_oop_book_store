@@ -17,6 +17,7 @@ struct thoigian{
     int giay;
 };
 struct mahanghoa{
+    bool check;
     int id_donhang;
     string ten;
     int soluong;

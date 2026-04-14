@@ -1,9 +1,8 @@
 ===== HOA DON THUE =====
-Ma hoa don: 6332
-Ten sach: Sach 3
-So luong: 1
-Don gia thue:  5600
+Ma hoa don: 5028
+Ten sach: Sach 52
+So luong: 9
+Don gia thue:  5000
+Thoi gian: 14/4/2026 11:38:35
 ------------------------
-TONG TIEN: 5600 VND
-Giao dich thue thanh cong! So luong ton kho da duoc cap nhat.
-Thoi gian giao dich: 13/04/2026 00:00:34
+TONG TIEN: 90000 VND

@@ -66,6 +66,20 @@ void customer::thuchienmua()
     xuatdata();
     xuathoadon();
 }
+void customer::thuchienthue()
+{
+    db.database_show();
+    cout<<"Vui long nhap thong tin sach ban muon thue!\n";
+    thuesach();
+    xuatdata();
+    xuathoadon();
+}
+void customer::thuchientra()
+{
+    trasach();
+    xuathoadon();
+    xuatdata();
+}
 doituong::doituong(Database_Sach &d,Database_Donhang &x) : staff(d,x),customer(d,x){}
 void doituong::thuchien() 
 {
@@ -74,10 +88,18 @@ void doituong::thuchien()
         cout<<"Role cua ban la:\n";
         cout<<"1.Nguoi mua\n";
         cout<<"2.Quan li\n";
+        cout<<"3.Nguoi thue sach\n";
+        cout<<"4.Khach hang tra sach\n";
         cout<<"0.Thoat\n";
         cout<<"Moi ban chon Role: ";
         cin>>chon;
         switch (chon) {
+        case 4:
+            thuchientra();
+            break;
+        case 3:
+            thuchienthue();
+            break;
         case 2:
             quanli();
             break;

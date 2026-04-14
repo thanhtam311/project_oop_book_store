@@ -25,6 +25,8 @@ class customer:public HanhVi,public Data{
 public:
     customer(Database_Sach &d,Database_Donhang &x);
     void thuchienmua();
+    void thuchienthue();
+    void thuchientra();
 };
 class doituong:public staff,customer{
 public:
