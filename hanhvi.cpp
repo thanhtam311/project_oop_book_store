@@ -305,6 +305,7 @@ void HanhVi::Doanhthu(){
          << setw(20) << "Ten sach"
          << setw(10) << "SL"
          << setw(15) << "Don gia"
+         << setw(15) << "loai"
          << setw(15) << "Thanh tien" << endl;
     for (int i = 0; i < (int)danhsach.size(); i++)
     {
@@ -315,6 +316,7 @@ void HanhVi::Doanhthu(){
             << setw(20) << danhsach[i].ten
             << setw(10) << danhsach[i].soluong
             << setw(15) << fixed << setprecision(0) << danhsach[i].dongia
+            << setw(15) << "Mua"
             << setw(15) << fixed << setprecision(0) << danhsach[i].tien << endl;
         }
         else {
@@ -323,6 +325,7 @@ void HanhVi::Doanhthu(){
                  << setw(20) << danhsach[i].ten
                  << setw(10) << danhsach[i].soluong
                  << setw(15) << fixed << setprecision(0) << danhsach[i].dongia
+                 << setw(15)<<"Thue"
                  << setw(15) << fixed << setprecision(0) << danhsach[i].tien << endl;
         }
     }

@@ -12,7 +12,6 @@ int main()
     Database_Donhang dbd;
     Data ld(dbs,dbd);
     ld.Laydata("danh_sach_sach.txt");
-    dbs.database_show();
     ld.xuatdata();
     doituong dt(dbs,dbd);
     dt.thuchien();
